@@ -1,0 +1,21 @@
+
+# Input variables ---- var.<name>
+
+variable "instance_type" {
+  description = "ec2 intance type"
+  type = string
+  default = "t2.mirco"
+}
+
+# Local Variables ---- local.<name>
+
+locals {
+    service_name = "My Service"
+    owner = "DevOps Directive"
+}
+
+# Output variables
+
+output "instance_ip_addr" {
+    value = aws_instance.instance.public.ip
+}

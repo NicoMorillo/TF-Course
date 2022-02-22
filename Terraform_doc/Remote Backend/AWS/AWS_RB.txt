@@ -1,0 +1,10 @@
+terraform{
+    backend "s3"{
+        bucket          = "devops-doirective-tf-state"
+        key             = "tf-infra/terraform.tfstate"
+        region          = "eu-east-2"
+        dynamodb_table  = "terraform-state-locking"
+        encrypt         = true
+    }
+
+}
