@@ -8,11 +8,12 @@ locals {
 
 resource "aws_instance" "instance" {
   ami = var.ami
-  instance_type = var.intance_type
+  instance_type = var.instance_type
 
-  tags = var.instance_type
+  tags = {
     Name = var.instance_name
     ExtraTag = local.extra_tag
+  }
 }
 
 resource "aws_db_instance" "db_instance" {
@@ -21,7 +22,7 @@ resource "aws_db_instance" "db_instance" {
     engine = "postgres"
     engine_version = "12.4"
     instance_class = "db.t2.micro"
-    name = "mydb"
+    db_name = "mydb"
     username = var.db_user
     password = var.db_pass
    skip_final_snapshot = true
